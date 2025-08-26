@@ -3,6 +3,7 @@ package com.matheus.DigitalAgriculture.services;
 import com.matheus.DigitalAgriculture.dto.request.LoginRequestDTO;
 import com.matheus.DigitalAgriculture.dto.request.UsersRequestDTO;
 import com.matheus.DigitalAgriculture.dto.mapper.UsersMapper;
+import com.matheus.DigitalAgriculture.dto.response.LoginResponseDTO;
 import com.matheus.DigitalAgriculture.exception.AlreadyRegisteredException;
 import com.matheus.DigitalAgriculture.exception.RegisterNotFound;
 import com.matheus.DigitalAgriculture.model.Users;
@@ -44,12 +45,15 @@ public class AuthenticationUsersService {
         usersRepository.save(user);
     }
 
-    public String login(@Valid LoginRequestDTO loginRequestDTO) {
+    public LoginResponseDTO login(@Valid LoginRequestDTO loginRequestDTO) {
         try {
             var emailPassword = new UsernamePasswordAuthenticationToken(loginRequestDTO.email(), loginRequestDTO.password());
+
             var authentication  = authenticationManager.authenticate(emailPassword);
 
-            return tokenService.generateToken((Users) authentication.getPrincipal());
+            String token = tokenService.generateToken((Users) authentication.getPrincipal());
+
+            return new LoginResponseDTO(token, ((Users) authentication.getPrincipal()).getId());
         } catch (Exception exception) {
             throw new RegisterNotFound("Login inválido!");
         }

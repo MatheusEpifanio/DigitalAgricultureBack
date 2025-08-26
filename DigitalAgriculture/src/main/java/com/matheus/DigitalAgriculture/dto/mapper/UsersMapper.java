@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UsersMapper {
+
     public Users toEntity(UsersRequestDTO usersRequestDTO) {
         if(usersRequestDTO == null){
             return null;
