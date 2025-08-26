@@ -1,4 +1,4 @@
-package com.matheus.DigitalAgriculture.dto;
+package com.matheus.DigitalAgriculture.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;

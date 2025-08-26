@@ -1,8 +1,8 @@
 package com.matheus.DigitalAgriculture.controller;
 
-import com.matheus.DigitalAgriculture.dto.LoginRequestDTO;
-import com.matheus.DigitalAgriculture.dto.LoginResponseDTO;
-import com.matheus.DigitalAgriculture.dto.UsersRequestDTO;
+import com.matheus.DigitalAgriculture.dto.request.LoginRequestDTO;
+import com.matheus.DigitalAgriculture.dto.response.LoginResponseDTO;
+import com.matheus.DigitalAgriculture.dto.request.UsersRequestDTO;
 import com.matheus.DigitalAgriculture.services.AuthenticationUsersService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.matheus.DigitalAgriculture;
 
-import com.matheus.DigitalAgriculture.dto.UsersRequestDTO;
+import com.matheus.DigitalAgriculture.dto.request.UsersRequestDTO;
 import com.matheus.DigitalAgriculture.model.Users;
 import com.matheus.DigitalAgriculture.services.AuthenticationUsersService;
 import org.springframework.boot.CommandLineRunner;

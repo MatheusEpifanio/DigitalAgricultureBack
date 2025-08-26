@@ -17,13 +17,13 @@ public class GlobalHandlerException {
 
     @ExceptionHandler(RegisterNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handlerRegisterNotFound(RegisterNotFound registerNotFound){
+    public String handlerRegisterNotFound(RegisterNotFound registerNotFound) {
         return registerNotFound.getMessage();
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handlerException(Exception exception){
+    public String handlerException(Exception exception) {
         return "Ocorreu um erro!";
     }
 }

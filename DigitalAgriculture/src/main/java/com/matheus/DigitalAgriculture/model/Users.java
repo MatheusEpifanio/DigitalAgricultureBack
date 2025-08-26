@@ -3,11 +3,11 @@ package com.matheus.DigitalAgriculture.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,19 +18,20 @@ public class Users implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(length = 50)
     @NotBlank
-    @Length(max = 50)
     private String name;
 
-    @Column
+    @Column(length = 50)
     @NotBlank
-    @Length(max = 50)
     private String email;
 
     @Column
     @NotBlank
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "users")
+    private List<Fields> fields = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

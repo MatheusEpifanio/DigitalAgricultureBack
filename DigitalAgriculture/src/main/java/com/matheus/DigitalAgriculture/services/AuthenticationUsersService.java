@@ -1,7 +1,7 @@
 package com.matheus.DigitalAgriculture.services;
 
-import com.matheus.DigitalAgriculture.dto.LoginRequestDTO;
-import com.matheus.DigitalAgriculture.dto.UsersRequestDTO;
+import com.matheus.DigitalAgriculture.dto.request.LoginRequestDTO;
+import com.matheus.DigitalAgriculture.dto.request.UsersRequestDTO;
 import com.matheus.DigitalAgriculture.dto.mapper.UsersMapper;
 import com.matheus.DigitalAgriculture.exception.AlreadyRegisteredException;
 import com.matheus.DigitalAgriculture.exception.RegisterNotFound;
