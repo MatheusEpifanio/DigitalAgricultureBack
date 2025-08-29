@@ -1,6 +1,7 @@
 package com.matheus.DigitalAgriculture.controller;
 
 import com.matheus.DigitalAgriculture.dto.request.FieldsRequestDTO;
+import com.matheus.DigitalAgriculture.dto.response.FieldDetailsResponseDTO;
 import com.matheus.DigitalAgriculture.dto.response.FieldsResponseDTO;
 import com.matheus.DigitalAgriculture.dto.response.PaginationResponseDTO;
 import com.matheus.DigitalAgriculture.services.FieldsServices;
@@ -21,17 +22,12 @@ public class FieldsController {
     @Autowired
     FieldsServices fieldsServices;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void teste(){
-
-    }
-
-    @GetMapping("/{users_id}")
-    public PaginationResponseDTO<FieldsResponseDTO> getFieldsByUserId(@RequestParam(defaultValue = "0") @PositiveOrZero int numberPage,
+    @GetMapping("/{user_id}")
+    public PaginationResponseDTO<FieldsResponseDTO> findFieldsByUserId(@RequestParam(defaultValue = "0") @PositiveOrZero int numberPage,
                                                                       @RequestParam(defaultValue = "10") @Positive int lengthPage,
-                                                                      @PathVariable @NotNull @Positive long users_id) {
-        return fieldsServices.getFieldsByUserId(numberPage, lengthPage, users_id);
+                                                                      @PathVariable @NotNull @Positive long user_id) {
+
+        return fieldsServices.findFieldsByUserId(numberPage, lengthPage, user_id);
     }
 
     @PostMapping
@@ -40,4 +36,8 @@ public class FieldsController {
         fieldsServices.insertFields(fieldsRequestDTO);
     }
 
+    @GetMapping("/{id}")
+    public FieldDetailsResponseDTO findFindWithDetailsById(@PathVariable @NotNull @Positive long id) {
+        return fieldsServices.findFindWithDetailsById(id);
+    }
 }
