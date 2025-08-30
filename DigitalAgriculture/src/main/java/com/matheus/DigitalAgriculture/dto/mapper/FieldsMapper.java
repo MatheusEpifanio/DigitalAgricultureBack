@@ -18,7 +18,7 @@ public class FieldsMapper {
         return new FieldsResponseDTO(field.getId(), field.getName());
     }
 
-    public FieldDetailsResponseDTO toDetailsDto(Fields field) {
+    public FieldDetailsResponseDTO detailsToDto(Fields field) {
         if(field == null) {
             return null;
         }

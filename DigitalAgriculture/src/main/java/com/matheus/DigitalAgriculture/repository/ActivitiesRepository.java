@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ActivitiesRepository extends JpaRepository<Activities, Long> {
-    Page<Activities> findByFields_id(long fieldId, Pageable pageable);
+    Page<Activities> findByFieldsId(long fieldId, Pageable pageable);
 }

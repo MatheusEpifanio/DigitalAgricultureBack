@@ -39,20 +39,22 @@ public class FieldsServices {
                                                                        @RequestParam(defaultValue = "10") @Positive int lengthPage,
                                                                        @NotNull @Positive long userId) {
 
-        Page<Fields> fieldsPage = fieldsRepository.findByUsers_id(userId, PageRequest.of(numberPage, lengthPage));
+        Page<Fields> fieldsPage = fieldsRepository.findByUsersId(userId, PageRequest.of(numberPage, lengthPage));
         List<FieldsResponseDTO> listFields = fieldsPage.get().map(fieldsMapper::toDto).toList();
 
         return new PaginationResponseDTO<FieldsResponseDTO>(listFields, fieldsPage.getTotalElements(), fieldsPage.getTotalPages());
     }
 
     public void insertFields(@Valid FieldsRequestDTO fieldsRequestDTO) {
-        var users = usersRepository.findById(fieldsRequestDTO.users_id())
+        Users users = usersRepository.findById(fieldsRequestDTO.users_id())
                 .orElseThrow(() -> new RegisterNotFound("Usuário não encontrado"));
 
         fieldsRepository.save(fieldsMapper.toEntity(fieldsRequestDTO, users));
     }
 
     public FieldDetailsResponseDTO findFindWithDetailsById(@NotNull @Positive long id) {
-        return fieldsMapper.toDetailsDto(fieldsRepository.findFindWithDetailsById(id));
+        Fields field = fieldsRepository.findFindWithDetailsById(id)
+                    .orElseThrow(() -> new RegisterNotFound("Talhão não encontrado!"));
+        return fieldsMapper.detailsToDto(field);
     }
 }

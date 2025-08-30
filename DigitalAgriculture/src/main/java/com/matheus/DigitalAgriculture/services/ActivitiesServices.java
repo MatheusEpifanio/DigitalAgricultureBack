@@ -37,7 +37,7 @@ public class ActivitiesServices {
                                                                                 @NotNull long fieldId){
 
 
-        Page<Activities> activitiesPage = activitiesRepository.findByFields_id(fieldId, PageRequest.of(numberPage, lengthPage));
+        Page<Activities> activitiesPage = activitiesRepository.findByFieldsId(fieldId, PageRequest.of(numberPage, lengthPage));
         List<ActivitiesResponseDTO> listActivities = activitiesPage.get().map(activitiesMapper::toDto).toList();
 
         return new PaginationResponseDTO<ActivitiesResponseDTO>(listActivities, activitiesPage.getTotalElements(), activitiesPage.getTotalPages());

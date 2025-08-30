@@ -12,9 +12,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +39,8 @@ public class FieldsController {
 
     @GetMapping("/{id}")
     public FieldDetailsResponseDTO findFindWithDetailsById(@PathVariable @NotNull @Positive long id) {
+
+
         return fieldsServices.findFindWithDetailsById(id);
     }
 }
