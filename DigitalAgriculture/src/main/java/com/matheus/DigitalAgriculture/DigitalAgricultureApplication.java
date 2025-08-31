@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import java.math.BigDecimal;
 
@@ -20,6 +21,7 @@ public class DigitalAgricultureApplication {
 	}
 
     @Bean
+    @Profile("dev")
     CommandLineRunner initDataBase(AuthenticationUsersService authenticationUsersService, FieldsRepository fieldsRepository) {
         return args -> {
             Users user = new Users();

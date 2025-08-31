@@ -7,6 +7,7 @@ import com.matheus.DigitalAgriculture.dto.mapper.FieldsMapper;
 import com.matheus.DigitalAgriculture.dto.response.PaginationResponseDTO;
 import com.matheus.DigitalAgriculture.exception.RegisterNotFound;
 import com.matheus.DigitalAgriculture.model.Fields;
+import com.matheus.DigitalAgriculture.model.Users;
 import com.matheus.DigitalAgriculture.repository.FieldsRepository;
 import com.matheus.DigitalAgriculture.repository.UsersRepository;
 import jakarta.validation.Valid;

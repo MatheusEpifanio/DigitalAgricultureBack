@@ -1,4 +1,4 @@
 package com.matheus.DigitalAgriculture.dto.response;
 
-public record LoginResponseDTO(String token, long id) {
+public record LoginResponseDTO(String token) {
 }

@@ -49,11 +49,11 @@ public class AuthenticationUsersService {
         try {
             var emailPassword = new UsernamePasswordAuthenticationToken(loginRequestDTO.email(), loginRequestDTO.password());
 
-            var authentication  = authenticationManager.authenticate(emailPassword);
+            var authentication = authenticationManager.authenticate(emailPassword);
 
             String token = tokenService.generateToken((Users) authentication.getPrincipal());
 
-            return new LoginResponseDTO(token, ((Users) authentication.getPrincipal()).getId());
+            return new LoginResponseDTO(token);
         } catch (Exception exception) {
             throw new RegisterNotFound("Login inválido!");
         }

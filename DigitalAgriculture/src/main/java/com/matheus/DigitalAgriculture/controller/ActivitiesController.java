@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/fields/{field_id}/activities")
+@RequestMapping("api/fields/{field_id}/activities")
 public class ActivitiesController {
 
     @Autowired
