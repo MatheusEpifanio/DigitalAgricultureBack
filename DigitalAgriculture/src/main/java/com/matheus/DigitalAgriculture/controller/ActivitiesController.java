@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/fields/{field_id}/activities")
 public class ActivitiesController {
@@ -19,17 +21,14 @@ public class ActivitiesController {
     ActivitiesServices activitiesServices;
 
     @GetMapping
-    public PaginationResponseDTO<ActivitiesResponseDTO> getActivities(@RequestParam(defaultValue = "0") @PositiveOrZero int numberPage,
-                                                                      @RequestParam(defaultValue = "10") @Positive int lengthPage,
-                                                                      @PathVariable @NotNull long field_id) {
-        return activitiesServices.findActivitiesByFieldId(numberPage, lengthPage, field_id);
+    public List<ActivitiesResponseDTO> getActivities(@PathVariable @NotNull long field_id) {
+        return activitiesServices.findActivitiesByFieldId(field_id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void insertActivities(@PathVariable @NotNull @Positive long field_id, @RequestBody ActivitiesRequestDTO activitiesRequestDTO) {
+        System.out.println(activitiesRequestDTO);
         activitiesServices.insertActivities(field_id, activitiesRequestDTO);
     }
-
-
 }

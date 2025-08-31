@@ -18,16 +18,16 @@ public class Users implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(length = 50)
     @NotBlank
+    @Column(length = 50)
     private String name;
 
-    @Column(length = 50)
     @NotBlank
+    @Column(length = 50)
     private String email;
 
-    @Column
     @NotBlank
+    @Column(length = 100)
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "users")

@@ -46,8 +46,8 @@ public class FieldsServices {
         return new PaginationResponseDTO<FieldsResponseDTO>(listFields, fieldsPage.getTotalElements(), fieldsPage.getTotalPages());
     }
 
-    public void insertFields(@Valid FieldsRequestDTO fieldsRequestDTO) {
-        Users users = usersRepository.findById(fieldsRequestDTO.users_id())
+    public void insertFields(@Valid FieldsRequestDTO fieldsRequestDTO, long userId) {
+        Users users = usersRepository.findById(userId)
                 .orElseThrow(() -> new RegisterNotFound("Usuário não encontrado"));
 
         fieldsRepository.save(fieldsMapper.toEntity(fieldsRequestDTO, users));

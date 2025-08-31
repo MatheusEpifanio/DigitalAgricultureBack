@@ -1,5 +1,6 @@
 package com.matheus.DigitalAgriculture.controller;
 
+
 import com.matheus.DigitalAgriculture.dto.request.FieldsRequestDTO;
 import com.matheus.DigitalAgriculture.dto.response.FieldDetailsResponseDTO;
 import com.matheus.DigitalAgriculture.dto.response.FieldsResponseDTO;
@@ -33,14 +34,12 @@ public class FieldsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void insertFields(@RequestBody @Valid FieldsRequestDTO fieldsRequestDTO) {
-        fieldsServices.insertFields(fieldsRequestDTO);
+    public void insertFields(@RequestBody @Valid FieldsRequestDTO fieldsRequestDTO, @AuthenticationPrincipal Users users) {
+        fieldsServices.insertFields(fieldsRequestDTO, users.getId());
     }
 
     @GetMapping("/{id}")
     public FieldDetailsResponseDTO findFindWithDetailsById(@PathVariable @NotNull @Positive long id) {
-
-
         return fieldsServices.findFindWithDetailsById(id);
     }
 }

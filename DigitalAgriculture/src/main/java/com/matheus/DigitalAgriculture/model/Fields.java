@@ -18,24 +18,24 @@ public class Fields {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     @NotBlank
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     @NotBlank
     private String crop;
 
-    @Column(nullable = false)
     @NotNull
+    @Column(nullable = false)
     private Integer areaHectares;
 
-    @Column(precision = 9, scale = 6, nullable = false)
     @NotNull
+    @Column(precision = 9, scale = 6, nullable = false)
     private BigDecimal longitude;
 
-    @Column(precision = 8, scale = 6, nullable = false)
     @NotNull
+    @Column(precision = 8, scale = 6, nullable = false)
     private BigDecimal latitude;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

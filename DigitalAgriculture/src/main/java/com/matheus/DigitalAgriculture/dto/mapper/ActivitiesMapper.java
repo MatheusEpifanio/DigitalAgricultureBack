@@ -27,7 +27,7 @@ public class ActivitiesMapper {
 
         Activities activities = new Activities();
 
-        activities.setType(TypeActivities.getDescription(activitiesRequestDTO.typeActivities()));
+        activities.setType(TypeActivities.getDescription(activitiesRequestDTO.type()));
         activities.setObservations(activitiesRequestDTO.observations());
         activities.setDate(activitiesRequestDTO.date());
         activities.setFields(fields);

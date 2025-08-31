@@ -51,15 +51,14 @@ class FieldsServicesTest {
         return exampleField;
     }
 
-    private FieldsRequestDTO aFieldsRequestDto(Long userId) {
+    private FieldsRequestDTO aFieldsRequestDto() {
         return new FieldsRequestDTO(
                 null,
                 "Field A",
                 "Soy",
                 100,
                 new BigDecimal("12.345678"),
-                new BigDecimal("98.765432"),
-                userId
+                new BigDecimal("98.765432")
         );
     }
 
@@ -125,14 +124,14 @@ class FieldsServicesTest {
         long userId = 77L;
         Users user = persistentUser(userId);
 
-        FieldsRequestDTO dto = aFieldsRequestDto(userId);
+        FieldsRequestDTO dto = aFieldsRequestDto();
         when(usersRepository.findById(userId)).thenReturn(Optional.of(user));
 
         Fields entity = new Fields();
         when(fieldsMapper.toEntity(dto, user)).thenReturn(entity);
         when(fieldsRepository.save(entity)).thenReturn(entity);
 
-        service.insertFields(dto);
+        service.insertFields(dto, userId);
 
         verify(usersRepository).findById(userId);
         verify(fieldsMapper).toEntity(dto, user);
@@ -142,10 +141,10 @@ class FieldsServicesTest {
     @Test
     void insertFields_shouldThrowRegisterNotFound_whenUserDoesNotExist() {
         long userId = 999L;
-        FieldsRequestDTO dto = aFieldsRequestDto(userId);
+        FieldsRequestDTO dto = aFieldsRequestDto();
         when(usersRepository.findById(userId)).thenReturn(Optional.empty());
 
-        RegisterNotFound ex = assertThrows(RegisterNotFound.class, () -> service.insertFields(dto));
+        RegisterNotFound ex = assertThrows(RegisterNotFound.class, () -> service.insertFields(dto, userId));
         assertEquals("Usuário não encontrado", ex.getMessage());
 
         verify(usersRepository).findById(userId);

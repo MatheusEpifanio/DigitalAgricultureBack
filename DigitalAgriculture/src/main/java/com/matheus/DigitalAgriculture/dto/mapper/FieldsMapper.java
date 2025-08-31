@@ -1,11 +1,14 @@
 package com.matheus.DigitalAgriculture.dto.mapper;
 
 import com.matheus.DigitalAgriculture.dto.request.FieldsRequestDTO;
+import com.matheus.DigitalAgriculture.dto.response.ActivitiesResponseDTO;
 import com.matheus.DigitalAgriculture.dto.response.FieldDetailsResponseDTO;
 import com.matheus.DigitalAgriculture.dto.response.FieldsResponseDTO;
 import com.matheus.DigitalAgriculture.model.Fields;
 import com.matheus.DigitalAgriculture.model.Users;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class FieldsMapper {
@@ -23,8 +26,15 @@ public class FieldsMapper {
             return null;
         }
 
+        List<ActivitiesResponseDTO> activitiesList = field.getActivities().stream()
+                .map(activities -> {
+                    return new ActivitiesResponseDTO(activities.getId(), activities.getType().getValue(), activities.getDate(),
+                            activities.getObservations(), field.getId());
+                })
+                .toList();
+
         return new FieldDetailsResponseDTO(field.getId(), field.getName(), field.getCrop(), field.getAreaHectares(),
-                    field.getLatitude(), field.getLongitude(), field.getActivities());
+                    field.getLatitude(), field.getLongitude(), activitiesList);
     }
 
 

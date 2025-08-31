@@ -32,15 +32,9 @@ public class ActivitiesServices {
     @Autowired
     ActivitiesMapper activitiesMapper;
 
-    public PaginationResponseDTO<ActivitiesResponseDTO> findActivitiesByFieldId(@PositiveOrZero int numberPage,
-                                                                                @Positive int lengthPage,
-                                                                                @NotNull long fieldId){
-
-
-        Page<Activities> activitiesPage = activitiesRepository.findByFieldsId(fieldId, PageRequest.of(numberPage, lengthPage));
-        List<ActivitiesResponseDTO> listActivities = activitiesPage.get().map(activitiesMapper::toDto).toList();
-
-        return new PaginationResponseDTO<ActivitiesResponseDTO>(listActivities, activitiesPage.getTotalElements(), activitiesPage.getTotalPages());
+    public List<ActivitiesResponseDTO> findActivitiesByFieldId(@NotNull long fieldId){
+        List<Activities> activitiesList = activitiesRepository.findByFieldsId(fieldId);
+        return activitiesList.stream().map(activities -> activitiesMapper.toDto(activities)).toList();
     }
 
     public void insertActivities(@NotNull long fieldId, @Valid ActivitiesRequestDTO activitiesRequestDTO){

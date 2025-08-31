@@ -18,7 +18,7 @@ public class Activities {
     private Long id;
 
     @NotNull
-    @Column(nullable = true)
+    @Column(nullable = true, length = 15)
     @Convert(converter = TypeConverter.class)
     private TypeActivities type;
 
@@ -26,7 +26,7 @@ public class Activities {
     @Column(nullable = false)
     private LocalDate date;
 
-    @Column
+    @Column(length = 500)
     private String observations;
 
     @NotNull
