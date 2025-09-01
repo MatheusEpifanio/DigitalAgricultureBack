@@ -41,4 +41,4 @@ docker compose down
 ```
 A api estará rodando em `http://localhost:8080`.
 ---
-[Collection] (https://github.com/MatheusEpifanio/DigitalAgricultureBack/blob/main/DigitalAgriculture/DigitalAgriculture.postman_collection.json)
+- [Collection da api](https://github.com/MatheusEpifanio/DigitalAgricultureBack/blob/main/DigitalAgriculture/DigitalAgriculture.postman_collection.json)
