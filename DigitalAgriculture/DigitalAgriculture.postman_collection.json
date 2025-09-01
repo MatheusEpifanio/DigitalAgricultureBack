@@ -23,7 +23,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"matheus\",\r\n  \"email\": \"teste@teste.com123\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+					"raw": "{\r\n  \"name\": \"matheus\",\r\n  \"email\": \"teste123@teste.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -31,12 +31,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8081/api/auth/register",
+					"raw": "http://localhost:8080/api/auth/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8081",
+					"port": "8080",
 					"path": [
 						"api",
 						"auth",
@@ -280,7 +280,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"teste@teste.com1\",\r\n    \"password\": \"123456\"\r\n}\r\n",
+					"raw": "{\r\n    \"email\": \"teste@teste.com123\",\r\n    \"password\": \"123456\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
